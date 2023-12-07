@@ -38,6 +38,7 @@ const App = () => {
      <div  className="flex flex-wrap desktop:flex-nowrap items-center desktop:items-start desktop:flex-row flex-col justify-between w-[98%] md:w-11/12 px-4 gap-10 mt-4 mx-auto">
     
              <div className="shadow-lg w-[98%] max-w-[330px] sm:w-[330px] shadow-green-200 py-10 px-4 border-white rounded-md bg-[#54b2a9] desktop:fixed">
+             
              <Filter/>
              </div>
              <div className=" hidden laptop:flex sm:w-[340px] ">
