@@ -39,6 +39,7 @@ const App = () => {
     
              <div className="shadow-lg w-[98%] max-w-[330px] sm:w-[330px] shadow-green-200 py-10 px-4 border-white rounded-md bg-[#54b2a9] desktop:fixed">
                           <Filter/>
+          
              </div>
              <div className=" hidden laptop:flex sm:w-[340px] ">
              {/* <Filter/> */}
