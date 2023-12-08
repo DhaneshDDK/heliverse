@@ -27,7 +27,7 @@ const Users = ({users}) => {
   return (
     <div>
           {
-        (loading)? <div className='flex items-center justify-center'><SpinnerRoundOutlined size={100}/></div>
+        (loading)? <div className='flex items-center justify-center '><SpinnerRoundOutlined size={100}/></div>
         : (slicedUsers.length === 0)?   <div className='flex items-center justify-center h-[40vh] font-bold text-[2em] text-red-500 font-serif'> No User found </div> :
           <div>
           <div className='flex flex-col items-center justify-center gap-2'>

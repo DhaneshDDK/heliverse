@@ -32,7 +32,7 @@ const App = () => {
 
 
   return (
-    <div  className=" bg-black min-h-screen ">
+    <div  className=" bg-black min-h-[120vh] ">
 
     <div className='max-w-[1600px] mx-auto overflow-auto px-2'>
      
