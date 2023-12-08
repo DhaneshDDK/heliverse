@@ -26,7 +26,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="w-11/12 text-white mx-auto pt-2 px-4 h-16 relative">
+    <div className="w-11/12 text-white mx-auto pt-2  h-16 relative">
          <div className='flex items-center justify-between px-10'>
             <div className='text-[26px] font-bold font-serif '>User Database </div>
            { isOpen && <div className='absolute lg:relative lg:top-0 lg:right-0 top-20 border-2 px-2 py-4 rounded-lg bg-gray-500 right-5

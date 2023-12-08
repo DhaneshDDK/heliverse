@@ -34,9 +34,9 @@ const App = () => {
   return (
     <div  className=" bg-black min-h-[101vh] ">
 
-    <div className='max-w-[1600px] mx-auto overflow-auto px-2'>
+    <div className='max-w-[1400px] mx-auto overflow-auto px-2 '>
      
-     <div className='fixed right-0 left-0 top-0 z-10 backdrop-blur-lg mb-1 max-w-[1800px] mx-auto'> <Navbar/> </div>
+     <div className='fixed right-0 left-0 top-0 z-10 backdrop-blur-lg mb-1 max-w-[1400px] mx-auto'> <Navbar/> </div>
      <div className="h-16"></div>
 
      <Routes>
@@ -50,7 +50,7 @@ const App = () => {
     <div className=" hidden laptop:flex sm:w-[340px] ">
     {/* <Filter/> */}
     </div>
-    <div className=' w-[100%] laptop:w-[800px] desktop:w-[900px] relative'> <Users users={users}/></div>
+    <div className=' w-[100%] laptop:w-[900px] desktop:w-[900px] relative'> <Users users={users}/></div>
 
     </div>} />
 
