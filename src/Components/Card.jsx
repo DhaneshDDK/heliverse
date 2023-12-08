@@ -35,7 +35,7 @@ const Card = (user) => {
                 (available===true) ? <div> Yes </div> : <div> No </div>
               }
            </div> 
-           <NavLink to="/edituser"><FaRegEdit size={20} color='#fff101' className=' cursor-pointer'/></NavLink>
+           <NavLink to={`/edituser/${id}/${first_name}/${last_name}/${gender}/${domain}/${available}`}><FaRegEdit size={20} color='#fff101' className=' cursor-pointer'/></NavLink>
     </div>
   )
 }

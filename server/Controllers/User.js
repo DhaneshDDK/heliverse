@@ -124,6 +124,7 @@ exports.findUserByName = async (req,res)=>{
 exports.updateUser = async (req,res)=>{
     try {
         const {id,first_name,last_name,email,gender,avatar,domain,available} = req.body;
+        console.log(req.body);
         const updateduser = {};
         if(first_name) updateduser.first_name = first_name;
         if(last_name) updateduser.last_name = last_name;

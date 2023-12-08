@@ -1,7 +1,7 @@
 import {userEndpoints} from '../apis';
 import {apiConnector} from '../apiConnector';
 
-const { CREATE_USER , FETCHUSER_BY_FILTERS} = userEndpoints;
+const { CREATE_USER , FETCHUSER_BY_FILTERS, UPDATE_USER} = userEndpoints;
 
 
 export async function createUsers(data){
@@ -29,4 +29,16 @@ export async function fetchByFilters({gender,domain,available,name,id,setLoading
    } catch (error) {
      console.log(error.message);
    }
+}
+
+
+export async function updateUser(data){
+    try {
+      const {firstName, lastName, gender, domain, availability, id} = data;
+      const res = await apiConnector('PUT', UPDATE_USER, {first_name : firstName, last_name : lastName, email : "", gender:gender, 
+        available : availability, id : id, domain : domain});
+      return res;
+    } catch (error) {
+      console.log(error.message);
+    }
 }

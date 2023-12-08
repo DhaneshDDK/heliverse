@@ -22,7 +22,7 @@ const App = () => {
     const fetch = async ()=>{
       // console.log(gender,domain,available,id,name);
       const response = await fetchByFilters({gender,domain,available,name,id, setLoading, dispatch});
-      console.log(response);
+      // console.log(response);
       dispatch(setUsers(response?.data?.data));
     }
 
@@ -55,7 +55,7 @@ const App = () => {
     </div>} />
 
     <Route path='/createuser' element={<CreateUser/>}/>
-    <Route path='/edituser' element={<CreateUser/>}/>
+    <Route path='/edituser/:idedit/:first_nameedit/:last_nameedit/:genderedit/:domainedit/:availableedit' element={<CreateUser/>}/>
     <Route path='/createteam' element={<CreateTeam/>}/>
     <Route path='/viewteam' element={<ViewTeam/>}/>
 
