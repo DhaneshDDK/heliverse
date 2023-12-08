@@ -10,7 +10,7 @@ export async function createUsers(data){
    try {
      const data = await apiConnector('POST', CREATE_USER, {first_name : firstName, last_name : lastName, email : email, gender:gender, 
     available : availability, id : id, domain : domain});
-     console.log(data);
+    //  console.log(data);
      return data;
    } catch (error) {
      console.log(error.message);

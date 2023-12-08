@@ -14,7 +14,7 @@ import ViewTeam from './Pages/ViewTeam'
 import CreateTeam from './Pages/CreateTeam'
 
 const App = () => {
-  const {name, domain, available, id, gender, users, loading} = useSelector((state)=> state.page);
+  const {name, domain, available, id, gender, users, effect} = useSelector((state)=> state.page);
   const dispatch = useDispatch();
 
   useEffect(()=>{
@@ -28,7 +28,7 @@ const App = () => {
 
     fetch();
  
-},[gender,available,domain,name,id]);
+},[gender,available,domain,name,id,effect]);
 
 
   return (

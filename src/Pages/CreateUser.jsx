@@ -9,13 +9,17 @@ import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { updateUser } from "../Services/Operations/userApi";
+import { useDispatch } from "react-redux";
+import { setEffect } from "../Redux/Slices/Pagination";
 
 const CreateUser = () => {
   const { users } = useSelector((state) => state.page);
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-     const {idedit,first_nameedit, last_nameedit, genderedit, domainedit, availableedit} = useParams()
+     var {idedit,first_nameedit, last_nameedit, genderedit, domainedit, availableedit} = useParams()
+     availableedit = (availableedit==="true")?"yes":"no"
     //  console.log(idedit,first_nameedit, last_nameedit, genderedit, domainedit, availableedit)
 
     const [gender, setGender] = useState("");
@@ -35,12 +39,14 @@ const CreateUser = () => {
         email: "",
         firstName: "",
         lastName: "",
-        domain: (idedit)?domainedit: "",
-        gender: (idedit)?genderedit: "",
-        availability: (idedit)?availableedit:"",
+        domain:  "",
+        gender:  "",
+        availability: "",
       });
     }
   }, [reset, isSubmitSuccessful, location]);
+
+
 
   const [loading, setLoading] = useState(false);
 
@@ -48,12 +54,12 @@ const CreateUser = () => {
     // console.log(data);
     const toastId = toast.loading("Loading");
     setLoading(true);
+    dispatch(setEffect(true));
     try {
        if(idedit){
         const res = await updateUser(data);
-        console.log(res);
         toast.success("User updated successfully");
-        // navigate(`/`)
+        navigate("/");
         
        }else{
         const res = await createUsers(data);
@@ -65,6 +71,7 @@ const CreateUser = () => {
     }
     toast.dismiss(toastId);
     setLoading(false);
+    dispatch(setEffect(false));
   };
 
   return (
@@ -208,7 +215,7 @@ const CreateUser = () => {
               id="availability"
               name="availability"
               {...register("availability")}
-              value = { available || (availableedit)? (availableedit==="true")?"yes":"no" : "" }
+              value = { available  || availableedit}
                  onChange={(e)=>{setAvailable(e.target.value)}}
             >
               <option value={""}></option>

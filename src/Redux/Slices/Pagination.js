@@ -7,7 +7,8 @@ const initialState = {
     gender:"",
     available: "",
     domain : "",
-    id : ""
+    id : "",
+    effect : false,
 
 }
 
@@ -22,8 +23,9 @@ const pageSlice = createSlice({
         setAvailable : (state, value) => { state.available = value.payload; },
         setId : (state, value) => { state.id = value.payload; },
         setDomain : (state, value) => { state.domain = value.payload; },
+        setEffect : (state, value) => { state.effect = value.payload;   },
     }
 })
 
-export const {setUsers,setLoading,setName, setAvailable,setGender, setId, setDomain} = pageSlice.actions;
+export const {setUsers,setLoading,setName, setAvailable,setGender, setId, setDomain, setEffect} = pageSlice.actions;
 export default pageSlice.reducer;
