@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:4000/api/users";
+const BASE_URL = "https://userdatabasebackend.onrender.com/api/users";
 
 export const userEndpoints = {
     CREATE_USER : BASE_URL + "/createUser",
