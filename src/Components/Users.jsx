@@ -11,7 +11,7 @@ const Users = ({users}) => {
     const [slicedUsers, setSlicedUsers] = useState([]);
 
     useEffect(()=>{
-        setSlicedUsers(users.slice((pageNumber-1)*20,(pageNumber)*20));
+        setSlicedUsers(users?.slice((pageNumber-1)*20,(pageNumber)*20));
     },[pageNumber,users])
 
     const nextPage = async ()=>{

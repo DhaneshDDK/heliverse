@@ -16,6 +16,7 @@ exports.getAllUsers = async (req,res)=>{
 exports.createUser = async (req,res)=>{
     try {
         const {id,first_name,last_name,email,gender,avatar,domain,available} = req.body;
+        // console.log(req.body);
         if(!id || !first_name || !last_name || !email || !gender || !domain || available==null) {
             res.json({
                 message : "Please fill all necessary details"
@@ -23,7 +24,7 @@ exports.createUser = async (req,res)=>{
         }
 
         const data = await user.findOne({id: id});
-        console.log(data);
+        // console.log(data);
         if(data) {
             res.json({
                 success : "false",
@@ -34,7 +35,7 @@ exports.createUser = async (req,res)=>{
      else{
 
        const newuser = await user.create({
-        id, first_name, last_name, email, gender, avatar, domain, available
+        id, first_name, last_name, email, gender, avatar, domain, available : (available==="yes")?true:false
        });
 
        res.json({

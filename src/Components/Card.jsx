@@ -1,4 +1,6 @@
 import React from 'react'
+import { FaRegEdit } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
 
 const Card = (user) => {
     const {id,first_name, last_name, email, gender,avatar, domain, available } = user.user; 
@@ -33,6 +35,7 @@ const Card = (user) => {
                 (available===true) ? <div> Yes </div> : <div> No </div>
               }
            </div> 
+           <NavLink to="/edituser"><FaRegEdit size={20} color='#fff101' className=' cursor-pointer'/></NavLink>
     </div>
   )
 }
