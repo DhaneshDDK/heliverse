@@ -36,7 +36,7 @@ const App = () => {
 
     <div className='max-w-[1600px] mx-auto overflow-auto px-2'>
      
-     <div className='fixed right-0 left-0 top-0 z-10 backdrop-blur-lg mb-1'> <Navbar/> </div>
+     <div className='fixed right-0 left-0 top-0 z-10 backdrop-blur-lg mb-1 max-w-[1800px] mx-auto'> <Navbar/> </div>
      <div className="h-16"></div>
 
      <Routes>
@@ -55,7 +55,7 @@ const App = () => {
     </div>} />
 
     <Route path='/createuser' element={<CreateUser/>}/>
-    <Route path='/editeuser' element={<CreateUser/>}/>
+    <Route path='/edituser' element={<CreateUser/>}/>
     <Route path='/createteam' element={<CreateTeam/>}/>
     <Route path='/viewteam' element={<ViewTeam/>}/>
 

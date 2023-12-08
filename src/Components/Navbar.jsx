@@ -1,18 +1,39 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-
+import Nav from './Nav'
+import Hamburger from 'hamburger-react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 const Navbar = () => {
+  const [isOpen, setOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      setOpen(screenWidth > 1020);
+    };
+
+    // Initial check on mount
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
   return (
-    <div className="w-11/12 text-white mx-auto py-4 px-4 h-16">
+    <div className="w-11/12 text-white mx-auto pt-2 px-4 h-16 relative">
          <div className='flex items-center justify-between px-10'>
             <div className='text-[26px] font-bold font-serif '>User Database </div>
-            <div className='lg:flex items-center justify-center gap-3 hidden px-2'>
-              <NavLink to="/" className='rounded bg-gray-600 px-4 py-2 text-green-500 font-serif font-bold'>Home</NavLink>
-              <NavLink to="/createuser" className='rounded bg-gray-600 px-4 py-2 text-green-500 font-serif font-bold'>Create user</NavLink>
-              <NavLink to="/createteam" className='rounded bg-gray-600 px-4 py-2 text-green-500 font-serif font-bold'>Create Team</NavLink>
-              <NavLink to="/viewteam" className='rounded bg-gray-600 px-4 py-2 text-green-500 font-serif font-bold'>View Team</NavLink>
-            </div>
+           { isOpen && <div className='absolute lg:relative lg:top-0 lg:right-0 top-20 border-2 px-2 py-4 rounded-lg bg-gray-500 right-5
+            lg:border-0 lg:bg-transparent'><Nav/></div> }
+            <div className='lg:hidden'><Hamburger toggled={isOpen} toggle={setOpen} color='white' /></div>
          </div>
+
     </div>
   )
 }
