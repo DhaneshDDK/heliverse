@@ -19,17 +19,22 @@ const CreateUser = () => {
   const dispatch = useDispatch();
 
      var {idedit,first_nameedit, last_nameedit, genderedit, domainedit, availableedit} = useParams()
-     availableedit = (availableedit==="true")?"yes":"no"
-    //  console.log(idedit,first_nameedit, last_nameedit, genderedit, domainedit, availableedit)
-
+     if(availableedit==="true") availableedit = "yes"
+     else if(availableedit==="false") availableedit = "no"
+     
     const [gender, setGender] = useState("");
     const [domain, setDomain] = useState("");
     const [available, setAvailable] = useState("");
+
+    // console.log(idedit,first_nameedit, last_nameedit, genderedit, domainedit, availableedit, gender, domain, available)
+   
+    useEffect(()=>{},[location.pathname])
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
@@ -44,9 +49,11 @@ const CreateUser = () => {
         availability: "",
       });
     }
-  }, [reset, isSubmitSuccessful, location]);
+  }, [reset, isSubmitSuccessful]);
 
+  useEffect(()=>{ setValue("id", idedit || (users?.length + 1));},[location.pathname])
 
+ 
 
   const [loading, setLoading] = useState(false);
 
@@ -56,12 +63,13 @@ const CreateUser = () => {
     setLoading(true);
     dispatch(setEffect(true));
     try {
-       if(idedit){
+       if(idedit!==undefined){
         const res = await updateUser(data);
         toast.success("User updated successfully");
         navigate("/");
         
        }else{
+        // console.log("called");
         const res = await createUsers(data);
         toast.success("User created successfully");
        }
@@ -149,8 +157,8 @@ const CreateUser = () => {
               type="id"
               id="id"
               name="id"
-              {...register("id")}
               value={(idedit)? idedit : users?.length + 1}
+              {...register("id")}
               className="px-4 py-2 rounded-md border border-[#00ffff] outline-none bg-gray-900 font-bold text-gray-400 "
             />
           </div>
@@ -166,8 +174,9 @@ const CreateUser = () => {
               name="gender"
               value={  gender || genderedit}
 
-              {...register("gender")}
              onChange={(e)=>{setGender(e.target.value)}}
+             
+             {...register("gender")}
             >
               <option value={""}> </option>
               <option value={"Female"}>Female</option>
@@ -190,9 +199,10 @@ const CreateUser = () => {
               type="domain"
               id="domain"
               name="domain"
-              {...register("domain")}
               value = {domain || domainedit}
                  onChange={(e)=>{setDomain(e.target.value)}}
+              {...register("domain")}
+            
             >
               <option value={""}></option>
               <option value={"Sales"}>Sales</option>
@@ -214,9 +224,10 @@ const CreateUser = () => {
               type="availability"
               id="availability"
               name="availability"
-              {...register("availability")}
-              value = { available  || availableedit}
+              value = { available  || availableedit }
                  onChange={(e)=>{setAvailable(e.target.value)}}
+              {...register("availability")}
+
             >
               <option value={""}></option>
               <option value={"yes"}>Yes</option>

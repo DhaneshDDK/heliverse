@@ -23,12 +23,14 @@ exports.createUser = async (req,res)=>{
             })
         }
 
+        console.log(id);
+
         const data = await user.findOne({id: id});
-        // console.log(data);
+        console.log(data);
         if(data) {
             res.json({
                 success : "false",
-                message : "User already exists"
+                message : "User already exists",
             })
         }
        

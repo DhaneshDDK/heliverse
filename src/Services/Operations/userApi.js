@@ -6,7 +6,7 @@ const { CREATE_USER , FETCHUSER_BY_FILTERS, UPDATE_USER} = userEndpoints;
 
 export async function createUsers(data){
    const {firstName, lastName,email, gender, domain, availability, id} = data;
-  
+   console.log(firstName, lastName, email, gender, domain, availability,id)
    try {
      const data = await apiConnector('POST', CREATE_USER, {first_name : firstName, last_name : lastName, email : email, gender:gender, 
     available : availability, id : id, domain : domain});
