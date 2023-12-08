@@ -23,7 +23,7 @@ exports.createUser = async (req,res)=>{
             })
         }
 
-        console.log(id);
+        // console.log(id);
 
         const data = await user.findOne({id: id});
         console.log(data);
